@@ -7,40 +7,20 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Password Prompt -->
   <div id="password-container">
     <h2>Please Enter the Password</h2>
     <input type="password" id="password" placeholder="Enter Password">
     <button id="login-btn">Login</button>
   </div>
 
+  <!-- App Container (Hidden initially) -->
   <div id="app-container" style="display: none;">
-    <header>
-      <h1>Plane Seating Map</h1>
-    </header>
-
-    <main>
-      <div class="controls">
-        <button id="save-layout">Save Layout</button>
-        <button id="load-layout">Load Layout</button>
-        <button id="export-layout">Export Layout</button>
-        <input type="file" id="import-layout" accept=".json">
-      </div>
-
-      <div id="seat-map"></div>
-
-      <div class="legend">
-        <h3>Seat Color Legend</h3>
-        <p><span class="legend-box red"></span> Red: High Priority</p>
-        <p><span class="legend-box purple"></span> Purple: Reserved</p>
-        <p><span class="legend-box green"></span> Green: Available</p>
-      </div>
-    </main>
-
-    <footer>
-      <p>© 2025 Your Name</p>
-    </footer>
+    <h1>Plane Seating Map</h1>
+    <div id="seat-map"></div>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
+
