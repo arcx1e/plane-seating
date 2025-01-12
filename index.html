@@ -7,34 +7,42 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Plane Seating Map</h1>
-  </header>
+  <div id="password-container">
+    <h2>Please Enter the Password</h2>
+    <input type="password" id="password" placeholder="Enter Password">
+    <button id="login-btn">Login</button>
+  </div>
 
-  <main>
-    <!-- Buttons for saving and loading layouts -->
-    <div class="controls">
-      <button id="save-layout">Save Layout</button>
-      <button id="load-layout">Load Layout</button>
-      <button id="export-layout">Export Layout</button>
-      <input type="file" id="import-layout" accept=".json">
-    </div>
+  <div id="app-container" style="display: none;">
+    <header>
+      <h1>Plane Seating Map</h1>
+    </header>
 
-    <!-- Seat Map -->
-    <div id="seat-map"></div>
+    <main>
+      <!-- Buttons for saving and loading layouts -->
+      <div class="controls">
+        <button id="save-layout">Save Layout</button>
+        <button id="load-layout">Load Layout</button>
+        <button id="export-layout">Export Layout</button>
+        <input type="file" id="import-layout" accept=".json">
+      </div>
 
-    <!-- Legend -->
-    <div class="legend">
-      <h3>Seat Color Legend</h3>
-      <p><span class="legend-box red"></span> Red: High Priority</p>
-      <p><span class="legend-box purple"></span> Purple: Reserved</p>
-      <p><span class="legend-box green"></span> Green: Available</p>
-    </div>
-  </main>
+      <!-- Seat Map -->
+      <div id="seat-map"></div>
 
-  <footer>
-    <p>© 2025 Your Name</p>
-  </footer>
+      <!-- Legend -->
+      <div class="legend">
+        <h3>Seat Color Legend</h3>
+        <p><span class="legend-box red"></span> Red: High Priority</p>
+        <p><span class="legend-box purple"></span> Purple: Reserved</p>
+        <p><span class="legend-box green"></span> Green: Available</p>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 Your Name</p>
+    </footer>
+  </div>
 
   <script src="script.js"></script>
 </body>
