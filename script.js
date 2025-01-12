@@ -1,4 +1,4 @@
-const correctPassword = "TUIFlights07";  // Set your password here
+const correctPassword = "yourPassword";  // Set your password here
 const passwordContainer = document.getElementById("password-container");
 const appContainer = document.getElementById("app-container");
 
@@ -12,23 +12,24 @@ const seatMap = document.getElementById("seat-map");
 document.getElementById("login-btn").addEventListener("click", function() {
   const enteredPassword = document.getElementById("password").value;
 
+  // Check if the password entered is correct
   if (enteredPassword === correctPassword) {
-    passwordContainer.style.display = "none";
-    appContainer.style.display = "block";  // Show the seat map and controls
+    passwordContainer.style.display = "none";  // Hide the password prompt
+    appContainer.style.display = "block";  // Show the seating map
     generateSeatMap();  // Generate the seat map after successful login
   } else {
-    alert("Incorrect password! Please try again.");
+    alert("Incorrect password! Please try again.");  // Show an error message if password is incorrect
   }
 });
 
 // Generate the seat map
 function generateSeatMap() {
-  seatMap.innerHTML = ""; // Clear any existing seats
+  seatMap.innerHTML = "";  // Clear any existing seats
   for (let row = 1; row <= rows; row++) {
     for (let col = 1; col <= cols; col++) {
       const seat = document.createElement("div");
       seat.classList.add("seat");
-      seat.dataset.seatId = `${row}${String.fromCharCode(64 + col)}`; // e.g., 1A, 1B
+      seat.dataset.seatId = `${row}${String.fromCharCode(64 + col)}`;  // e.g., 1A, 1B
       seat.innerText = seat.dataset.seatId;
 
       // Add a div for the seat name that will appear on hover
@@ -93,46 +94,3 @@ function assignNameToSeat(seat) {
     seatName.innerText = "";  // Clear name in the seat
   }
 }
-
-/**
- * Save the layout to localStorage.
- */
-function saveLayout() {
-  const seats = Array.from(document.querySelectorAll(".seat")).map((seat) => ({
-    id: seat.dataset.seatId,
-    color: seat.classList.contains("red")
-      ? "red"
-      : seat.classList.contains("purple")
-      ? "purple"
-      : seat.classList.contains("green")
-      ? "green"
-      : "",
-    name: seat.dataset.name || "",
-  }));
-  localStorage.setItem("seatLayout", JSON.stringify(seats));
-  alert("Layout saved!");
-}
-
-/**
- * Load the layout from localStorage.
- */
-function loadLayout() {
-  const seats = JSON.parse(localStorage.getItem("seatLayout") || "[]");
-  if (seats.length === 0) {
-    alert("No saved layout found.");
-    return;
-  }
-
-  // Reset the map
-  generateSeatMap();
-
-  seats.forEach((seatData) => {
-    const seat = document.querySelector(`.seat[data-seat-id="${seatData.id}"]`);
-    if (seat) {
-      if (seatData.color) {
-        seat.classList.add(seatData.color);
-      }
-      if (seatData.name) {
-        seat.dataset.name = seatData.name;
-        seat.query
-
