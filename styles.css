@@ -1,105 +1,100 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-  }
-  
-  header {
-    background-color: #004080;
-    color: white;
-    padding: 20px;
-  }
-  
-  footer {
-    background-color: #f0f0f0;
-    color: #333;
-    padding: 10px;
-    margin-top: 20px;
-  }
-  
-  .controls {
-    margin: 20px 0;
-  }
-  
-  #seat-map {
-    display: grid;
-    grid-template-columns: repeat(6, 50px);
-    gap: 10px 20px; /* Horizontal and vertical gaps */
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .seat {
-    width: 50px;
-    height: 50px;
-    border: 2px solid #ccc;
-    background-color: #f0f0f0;
-    cursor: pointer;
-    text-align: center;
-    line-height: 50px;
-    font-size: 14px;
-    position: relative;
-    transition: background-color 0.3s;
-  }
-  
-  .seat.occupied {
-    background-color: #ff6666;
-    cursor: not-allowed;
-  }
-  
-  .seat.red {
-    background-color: #ff4d4d;
-  }
-  
-  .seat.green {
-    background-color: #66ff66;
-  }
-  
-  .seat.purple {
-    background-color: #b19cd9;
-  }
-  
-  /* Tooltip for names */
-  .seat[data-name]:hover::after {
-    content: attr(data-name);
-    position: absolute;
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: black;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 12px;
-    white-space: nowrap;
-  }
-  
-  /* Legend */
-  .legend {
-    margin-top: 20px;
-    text-align: left;
-    display: inline-block;
-  }
-  
-  .legend-box {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-  }
-  
-  .legend-box.red {
-    background-color: #ff4d4d;
-  }
-  
-  .legend-box.purple {
-    background-color: #b19cd9;
-  }
-  
-  .legend-box.green {
-    background-color: #66ff66;
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+#app-container {
+  width: 80%;
+  max-width: 800px;
+  text-align: center;
+}
+
+#seat-map {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 20px repeat(3, 1fr); /* Adding space between ABC and DEF columns */
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.seat {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.seat.red {
+  background-color: red;
+}
+
+.seat.purple {
+  background-color: purple;
+}
+
+.seat.green {
+  background-color: green;
+}
+
+.seat:hover {
+  opacity: 0.8;
+}
+
+.seat-name {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.seat:hover .seat-name {
+  display: block;
+}
+
+.controls {
+  margin: 20px;
+}
+
+.legend {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.legend-box {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+
+.legend-box.red {
+  background-color: red;
+}
+
+.legend-box.purple {
+  background-color: purple;
+}
+
+.legend-box.green {
+  background-color: green;
+}
