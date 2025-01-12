@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plane Seating Map</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Plane Seating Map</h1>
+  </header>
+
+  <main>
+    <!-- Buttons for saving and loading layouts -->
+    <div class="controls">
+      <button id="save-layout">Save Layout</button>
+      <button id="load-layout">Load Layout</button>
+      <button id="export-layout">Export Layout</button>
+      <input type="file" id="import-layout" accept=".json">
+    </div>
+
+    <!-- Seat Map -->
+    <div id="seat-map"></div>
+
+    <!-- Legend -->
+    <div class="legend">
+      <h3>Seat Color Legend</h3>
+      <p><span class="legend-box red"></span> Red: High Priority</p>
+      <p><span class="legend-box purple"></span> Purple: Reserved</p>
+      <p><span class="legend-box green"></span> Green: Available</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Your Name</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
