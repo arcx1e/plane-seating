@@ -1,20 +1,27 @@
+const correctPassword = "yourPassword";  // Set your password here
+const passwordContainer = document.getElementById("password-container");
+const appContainer = document.getElementById("app-container");
+
 const rows = 10;
 const cols = 6;
 
 // Grab the seat map container
 const seatMap = document.getElementById("seat-map");
 
+// Event listener for login button
+document.getElementById("login-btn").addEventListener("click", function() {
+  const enteredPassword = document.getElementById("password").value;
+
+  if (enteredPassword === correctPassword) {
+    passwordContainer.style.display = "none";
+    appContainer.style.display = "block";  // Show the seat map and controls
+    generateSeatMap();  // Generate the seat map after successful login
+  } else {
+    alert("Incorrect password! Please try again.");
+  }
+});
+
 // Generate the seat map
-generateSeatMap();
-
-// Add event listeners for buttons
-document.getElementById("save-layout").addEventListener("click", saveLayout);
-document.getElementById("load-layout").addEventListener("click", loadLayout);
-document.getElementById("export-layout").addEventListener("click", exportLayout);
-document.getElementById("import-layout").addEventListener("change", importLayout);
-
-// Functions
-
 function generateSeatMap() {
   seatMap.innerHTML = ""; // Clear any existing seats
   for (let row = 1; row <= rows; row++) {
@@ -23,6 +30,11 @@ function generateSeatMap() {
       seat.classList.add("seat");
       seat.dataset.seatId = `${row}${String.fromCharCode(64 + col)}`; // e.g., 1A, 1B
       seat.innerText = seat.dataset.seatId;
+
+      // Add a div for the seat name that will appear on hover
+      const seatName = document.createElement("div");
+      seatName.classList.add("seat-name");
+      seat.appendChild(seatName);
 
       // Add click event for cycling colors
       seat.addEventListener("click", () => {
@@ -71,10 +83,14 @@ function cycleSeatColor(seat) {
  */
 function assignNameToSeat(seat) {
   const name = prompt("Enter the name for this seat:");
+  const seatName = seat.querySelector(".seat-name");
+
   if (name) {
     seat.dataset.name = name;
+    seatName.innerText = name;  // Update name in the seat
   } else {
     delete seat.dataset.name;
+    seatName.innerText = "";  // Clear name in the seat
   }
 }
 
@@ -118,59 +134,5 @@ function loadLayout() {
       }
       if (seatData.name) {
         seat.dataset.name = seatData.name;
-      }
-    }
-  });
+        seat.query
 
-  alert("Layout loaded!");
-}
-
-/**
- * Export the layout to a JSON file.
- */
-function exportLayout() {
-  const seats = Array.from(document.querySelectorAll(".seat")).map((seat) => ({
-    id: seat.dataset.seatId,
-    color: seat.classList.contains("red")
-      ? "red"
-      : seat.classList.contains("purple")
-      ? "purple"
-      : seat.classList.contains("green")
-      ? "green"
-      : "",
-    name: seat.dataset.name || "",
-  }));
-
-  const blob = new Blob([JSON.stringify(seats, null, 2)], {
-    type: "application/json",
-  });
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "seat-layout.json";
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-/**
- * Import the layout from a JSON file.
- */
-function importLayout(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    const seats = JSON.parse(e.target.result);
-
-    // Reset the map
-    generateSeatMap();
-
-    seats.forEach((seatData) => {
-      const seat = document.querySelector(`.seat[data
-        -seat-id="${seatData.id}"]`); if (seat) { if (seatData.color) { seat.classList.add(seatData.color); } if (seatData.name) { seat.dataset.name = seatData.name; } } });
-        alert("Layout imported successfully!");
-    };
-
-    reader.readAsText(file); }
