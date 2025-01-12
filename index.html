@@ -3,24 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plane Seating Map</title>
+  <title>Seat Reservation System</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Password Prompt -->
+  <!-- Password Authentication -->
   <div id="password-container">
-    <h2>Please Enter the Password</h2>
-    <input type="password" id="password" placeholder="Enter Password">
+    <h2>Enter Password to Access</h2>
+    <input type="password" id="password" placeholder="Enter password">
     <button id="login-btn">Login</button>
   </div>
 
-  <!-- App Container (Hidden initially) -->
-  <div id="app-container" style="display: none;">
-    <h1>Plane Seating Map</h1>
+  <!-- Main App Content (Initially hidden) -->
+  <div id="app-container">
+    <h1>Seat Reservation</h1>
+
+    <!-- Seat Map -->
     <div id="seat-map"></div>
+
+    <!-- Seat Details -->
+    <div id="seat-details"></div>
+
+    <!-- Admin Panel Button -->
+    <button id="open-panel-btn">Open Admin Panel</button>
+
+    <!-- Search Bar -->
+    <input type="text" id="seat-search" placeholder="Search for a seat (e.g. 1A)">
+    <button id="search-btn">Search</button>
   </div>
 
-  <!-- Make sure script.js is included at the bottom -->
+  <!-- Clear Button -->
+  <button id="clear-all-btn">Clear All</button>
+
+  <!-- Admin Panel (Initially Hidden) -->
+  <div id="admin-panel">
+    <button id="lock-seats-btn">Lock All Seats</button>
+    <button id="save-btn">Save</button>
+    <button id="load-btn">Load</button>
+    <button id="export-btn">Export</button>
+    <button id="close-panel-btn">Close</button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
