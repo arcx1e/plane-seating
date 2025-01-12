@@ -1,4 +1,4 @@
-const correctPassword = "yourPassword";  // Set your password here
+const correctPassword = "TUIFlights07";  // Set your password here
 const passwordContainer = document.getElementById("password-container");
 const appContainer = document.getElementById("app-container");
 
